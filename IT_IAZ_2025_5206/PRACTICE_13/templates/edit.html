@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Record</title>
+</head>
+<body>
+    <h1>Edit Record</h1>
+    <form action="{{ url_for('edit', id=record[0]) }}" method="POST">
+        <label>Rank: <input type="text" name="name" value="{{ record[1] }}"></label><br>
+        <label>Fullname: <input type="text" name="fullname" value="{{ record[2] }}"></label><br>
+        <label>Position: <input type="text" name="position" value="{{ record[3] }}"></label><br>
+        <label>Unit: <input type="text" name="unit" value="{{ record[4] }}"></label><br>
+        <label>DeploymentStatus: <input type="text" name="deploymentstatus" value="{{ record[5] }}"></label><br>
+        <button type="submit">Update</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
