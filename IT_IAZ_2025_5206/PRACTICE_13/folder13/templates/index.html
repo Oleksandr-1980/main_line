@@ -6,31 +6,32 @@
     <title>Personnel Management DB</title>
 </head>
 <body>
-    <h1>Personal Records</h1>
+    <h1>Personnel Records</h1>
     <a href="{{ url_for('create') }}">Create New Record</a>
     <table border="1">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>ЗВАННЯ</th>
-                <th>Прізвище та ініціали</th>
-                <th>Посада</th>
-                <th>Підрозділ</th>
-                <th>Місце дислокації</th>
+                <th>Rank</th>
+                <th>Full Name</th>
+                <th>Position</th>
+                <th>Unit</th>
+                <th>Deployment Status</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for record in records %}
             <tr>
-                <td>{{ record[0] }}</td>
-                <td>{{ record[1] }}</td>
-                <td>{{ record[2] }}</td>
-                <td>{{ record[3] }}</td>
-                <td>{{ record[4] }}</td>
-                <td>{{ record[5] }}</td>
+                <td>{{ record.PersonnelID }}</td>
+                <td>{{ record.rank }}</td>
+                <td>{{ record.fullname }}</td>
+                <td>{{ record.position }}</td>
+                <td>{{ record.unit }}</td>
+                <td>{{ record.deploymentstatus }}</td>
                 <td>
-                    <a href="{{ url_for('edit', id=record[0]) }}">Edit</a>
-                    <form action="{{ url_for('delete', id=record[0]) }}" method="POST" style="display:inline;">
+                    <a href="{{ url_for('edit', PersonnelID=record.PersonnelID) }}">Edit</a>
+                    <form action="{{ url_for('delete', PersonnelID=record.PersonnelID) }}" method="POST" style="display:inline;">
                         <button type="submit">Delete</button>
                     </form>
                 </td>
@@ -38,6 +39,7 @@
             {% endfor %}
         </tbody>
     </table>
+
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     <ul>
