@@ -1,0 +1,31 @@
+@startuml
+!define Table(x) class x << (T,#FFAAAA) >>
+!define PK(x) <u>x</u>
+!define FK(x) <color:blue>x</color>
+
+Table(Підрозділи) {
+    PK(ID_підрозділу): INT
+    Назва: VARCHAR(255)
+    Тип: VARCHAR(100)
+    Місцезнаходження: VARCHAR(255)
+}
+
+Table(Посади) {
+    PK(ID_посади): INT
+    Назва: VARCHAR(255)
+    Категорія: VARCHAR(100)
+}
+
+Table(Особовий_склад) {
+    PK(ID_особи): INT
+    Ім_я: VARCHAR(100)
+    Прізвище: VARCHAR(100)
+    Дата_народження: DATE
+    Звання: VARCHAR(50)
+    FK(ID_підрозділу): INT
+    FK(ID_посади): INT
+}
+
+Підрозділи ||--o{ Особовий_склад : "ID_підрозділу"
+Посади ||--o{ Особовий_склад : "ID_посади"
+@enduml
